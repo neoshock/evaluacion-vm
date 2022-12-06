@@ -26,12 +26,13 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  loadAuthorDetail(authorName: string) {
-    this.router.navigate(['/author', { name: authorName }]);
-  }
-
   isLogedUser() {
     return this.userService.isLogedUser();
+  }
+
+  saveAuthor(name: string) {
+    this.authorService.saveAuthorInLocalStorage(name);
+    this.authorService.setUpdateCount();
   }
 
 }

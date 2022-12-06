@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Work } from '../models/work';
 import { WorkDetail } from '../models/work-detail';
 import { AuthorService } from '../services/author.service';
+import { UserService } from '../services/user.service';
 import { WorkService } from '../services/work.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class AuthordetailsComponent implements OnInit {
   public authorName: string = "";
   public workDetail: WorkDetail = {};
 
-  constructor(private activateRoute: ActivatedRoute, private authorService: AuthorService, private workService: WorkService) {
+  constructor(private activateRoute: ActivatedRoute, private authorService: AuthorService,
+    private workService: WorkService, private userService: UserService) {
 
   }
 
@@ -36,6 +38,15 @@ export class AuthordetailsComponent implements OnInit {
     this.workService.getWorkDetail(name).then(
       result => this.workDetail = result[0]
     )
+  }
+
+  addWorkToFavorite(work: Work) {
+    this.workService.saveWorkinLocalStorage(work);
+    this.authorService.setUpdateCount();
+  }
+
+  isLogedUser(): boolean {
+    return this.userService.isLogedUser();
   }
 
 }

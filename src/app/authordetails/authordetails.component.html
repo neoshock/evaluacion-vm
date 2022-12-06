@@ -6,50 +6,60 @@
         </div>
         <div class="col-md-12">
             <div class="row justify-content-around">
-                <div class="col-md-4 m-3" *ngFor="let work of works">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5>
-                                {{work.title!}}
-                            </h5>
-                        </div>
-                        <div class="card-footer" style=" display: flex; justify-content: space-between;">
-                            <button class="btn btn-primary" (click)="showWorkDetail(work.title!)" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop">Show More</button>
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let work of works; let i = index">
+                                <th scope="row">{{i + 1}}</th>
+                                <td>{{work.title}}</td>
+                                <td>
+                                    <button class="btn btn-primary" (click)="showWorkDetail(work.title!)"
+                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="margin: 0px 12px;">Show More</button>
 
-                            <button *ngIf="isLogedUser()" class="btn btn-success"
-                                (click)="addWorkToFavorite(work)">Save</button>
+                                    <button *ngIf="isLogedUser()" class="btn btn-success"
+                                        (click)="addWorkToFavorite(work)">Save</button>
 
-                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">{{workDetail.title}}
-                                            </h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h6>Author: {{workDetail.author}}</h6>
-                                            <strong>Lines: {{workDetail.linecount}}</strong>
-                                            <hr />
-                                            <p *ngFor="let line of workDetail.lines | slice:0:10">
-                                                {{line}}
-                                            </p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button *ngIf="isLogedUser()" class="btn btn-success"
-                                                data-bs-dismiss="modal" (click)="addWorkToFavorite(work)">Save</button>
+                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                                        {{workDetail.title}}
+                                                    </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h6>Author: {{workDetail.author}}</h6>
+                                                    <strong>Lines: {{workDetail.linecount}}</strong>
+                                                    <hr />
+                                                    <p *ngFor="let line of workDetail.lines | slice:0:10">
+                                                        {{line}}
+                                                    </p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button *ngIf="isLogedUser()" class="btn btn-success"
+                                                        data-bs-dismiss="modal"
+                                                        (click)="addWorkToFavorite(work)">Save</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

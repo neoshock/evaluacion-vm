@@ -1,1 +1,18 @@
-<p>workdetails works!</p>
+<app-header></app-header>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h4>{{work.title}}</h4>
+        </div>
+        <div class="col-md-12">
+            <p>
+                Author: <strong>{{work.author}}</strong>
+            </p>
+        </div>
+        <div class="col-md-12">
+            <p *ngFor="let line of work.lines | slice: 0:10">
+                {{line}}
+            </p>
+        </div>
+    </div>
+</div>

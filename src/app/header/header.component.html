@@ -30,7 +30,7 @@
                     <span class="count">{{(worksSaved.length)}}</span>
                     <ul class="dropdown-menu">
                         <li *ngFor="let work of worksSaved" style="display: flex; margin-bottom: 6px;">
-                            <a class="dropdown-item">{{work.title}}</a>
+                            <a class="dropdown-item" href="/work/{{work.title}}">{{work.title}}</a>
                             <button (click)="deleteWork(work.title!)" class="btn btn-danger" style="margin:0px 6px;"><i
                                     class="bi bi-trash"></i></button>
                         </li>

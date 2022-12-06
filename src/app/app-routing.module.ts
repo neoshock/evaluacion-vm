@@ -4,12 +4,14 @@ import { AuthGuard } from './auth.guard';
 import { AuthordetailsComponent } from './authordetails/authordetails.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { WorkdetailsComponent } from './workdetails/workdetails.component';
 
 const routes: Routes = [
   { path: 'author/:name', component: AuthordetailsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'home-premiun', component: HomeComponent, canActivate: [AuthGuard] }
+  { path: 'home-premiun', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'work/:name', component: WorkdetailsComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

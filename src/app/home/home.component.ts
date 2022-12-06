@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   loadAuthors() {
     this.authorService.getAllAuthors().then(
       result => this.authors = result.authors
-    )
+    ).catch(error => console.log(error));
   }
 
   isLogedUser() {

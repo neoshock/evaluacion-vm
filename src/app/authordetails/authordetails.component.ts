@@ -31,13 +31,13 @@ export class AuthordetailsComponent implements OnInit {
   loadAuthorWorks(authorName: string) {
     this.authorService.getAuthorWorks(authorName).then(
       result => this.works = result
-    )
+    ).catch(error => console.log(error));
   }
 
   showWorkDetail(name: string) {
     this.workService.getWorkDetail(name).then(
       result => this.workDetail = result[0]
-    )
+    ).catch(error => console.log(error));
   }
 
   addWorkToFavorite(work: Work) {

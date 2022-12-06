@@ -11,8 +11,10 @@
                         <div class="card-body">
                             <h5>{{author}}</h5>
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer"
+                            style="display: flex; align-items: center; justify-content: space-between;">
                             <button class="btn btn-primary" [routerLink]="['/author/',author]">Show Details</button>
+                            <button *ngIf="isLogedUser()" class="btn btn-success text-white">Save</button>
                         </div>
                     </div>
                 </div>

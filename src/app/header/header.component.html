@@ -1,9 +1,12 @@
 <header class="mb-3">
     <nav class="navbar bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/home">Free Access</a>
+        <div class="container">
+            <a *ngIf="!isLogedUser()" class="navbar-brand" href="/home">Free Access</a>
+            <a *ngIf="isLogedUser()" class="navbar-brand" href="/home-premiun">Premiun</a>
             <form class="d-flex">
-                <button class="btn btn-outline-success" [routerLink]="['/login']">Login</button>
+                <button *ngIf="!isLogedUser()" class="btn btn-outline-success" [routerLink]="['/login']">Login</button>
+                <button *ngIf="isLogedUser()" class="btn btn-outline-danger" (click)="logOut()"
+                    [routerLink]="['/login']">LogOut</button>
             </form>
         </div>
     </nav>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorService } from '../services/author.service';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   public authors: [] = [];
 
-  constructor(private authorService: AuthorService, private router: Router) {
+  constructor(private authorService: AuthorService, private router: Router, private userService: UserService) {
 
   }
 
@@ -27,6 +28,10 @@ export class HomeComponent implements OnInit {
 
   loadAuthorDetail(authorName: string) {
     this.router.navigate(['/author', { name: authorName }]);
+  }
+
+  isLogedUser() {
+    return this.userService.isLogedUser();
   }
 
 }

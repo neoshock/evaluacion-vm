@@ -12,15 +12,16 @@
                     <form>
                         <div class="mb-3">
                             <label for="user_name" class="form-label">User Name</label>
-                            <input type="text" class="form-control" id="user_name" placeholder="enter your user name">
+                            <input [(ngModel)]="user.userName" name="userName" type="text" class="form-control"
+                                id="user_name" placeholder="enter your user name">
                         </div>
                         <div class="mb-3">
                             <label for="user_name" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="user_name"
-                                placeholder="enter your password">
+                            <input [(ngModel)]="user.password" name="password" type="password" class="form-control"
+                                id="user_name" placeholder="enter your password">
                         </div>
                         <div class="mb-3 w-100">
-                            <button class="btn btn-primary w-100">Login</button>
+                            <button class="btn btn-primary w-100" (click)="login()">Login</button>
                         </div>
                     </form>
                 </div>
